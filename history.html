@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance History | AttendancePro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>AttendancePro</span>
+                </a>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="attendance.html"><i class="fas fa-qrcode"></i> Mark Attendance</a></li>
+                <li><a href="history.html" class="active"><i class="fas fa-history"></i> History</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="dashboard-container">
+            <div class="welcome-banner">
+                <h1>Attendance History</h1>
+                <p>View and manage your attendance records</p>
+            </div>
+
+            <!-- Filters Section -->
+            <div class="filters-section" style="background: var(--card-bg); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--border); margin-bottom: 2rem;">
+                <h3 style="margin-bottom: 1.5rem;">Filter Records</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                    <div class="form-group">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                            <i class="fas fa-calendar"></i> Start Date
+                        </label>
+                        <input type="text" id="startDate" placeholder="Select start date" 
+                               style="width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--lighter); color: var(--text-primary);">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                            <i class="fas fa-calendar"></i> End Date
+                        </label>
+                        <input type="text" id="endDate" placeholder="Select end date" 
+                               style="width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--lighter); color: var(--text-primary);">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                            <i class="fas fa-filter"></i> Status
+                        </label>
+                        <select id="statusFilter" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--lighter); color: var(--text-primary);">
+                            <option value="">All Statuses</option>
+                            <option value="Present">Present</option>
+                            <option value="Late">Late</option>
+                            <option value="Early">Early</option>
+                            <option value="Absent">Absent</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" style="display: flex; align-items: flex-end;">
+                        <button id="applyFilters" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-filter"></i> Apply Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Summary -->
+            <div class="stats-summary" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                <div style="background: var(--card-bg); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--border); text-align: center;">
+                    <div style="font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <h3 id="totalRecords">0</h3>
+                    <p style="color: var(--text-secondary);">Total Records</p>
+                </div>
+                
+                <div style="background: var(--card-bg); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--border); text-align: center;">
+                    <div style="font-size: 2rem; color: var(--success); margin-bottom: 0.5rem;">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 id="presentRecords">0</h3>
+                    <p style="color: var(--text-secondary);">Present Days</p>
+                </div>
+                
+                <div style="background: var(--card-bg); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--border); text-align: center;">
+                    <div style="font-size: 2rem; color: var(--warning); margin-bottom: 0.5rem;">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 id="lateRecords">0</h3>
+                    <p style="color: var(--text-secondary);">Late Days</p>
+                </div>
+                
+                <div style="background: var(--card-bg); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--border); text-align: center;">
+                    <div style="font-size: 2rem; color: var(--error); margin-bottom: 0.5rem;">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <h3 id="absentRecords">0</h3>
+                    <p style="color: var(--text-secondary);">Absent Days</p>
+                </div>
+            </div>
+
+            <!-- Attendance Records -->
+            <div class="attendance-records" style="background: var(--card-bg); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--border);">
+                <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1.5rem;">
+                    <h3 style="margin: 0;">Attendance Records</h3>
+                    <div style="display: flex; gap: 1rem;">
+                        <button id="exportBtn" class="btn" style="background: var(--lighter); color: var(--text-primary);">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                        <button id="refreshBtn" class="btn btn-primary">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container" style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: var(--lighter);">
+                                <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border);">Date</th>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border);">Time</th>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border);">Status</th>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border);">Location</th>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border);">Accuracy</th>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border);">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attendanceTableBody">
+                            <tr>
+                                <td colspan="6" style="padding: 2rem; text-align: center; color: var(--text-secondary);">
+                                    <div class="spinner"></div>
+                                    <p style="margin-top: 1rem;">Loading attendance records...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination" style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                    <div style="color: var(--text-secondary);">
+                        Showing <span id="currentPage">1</span> of <span id="totalPages">1</span> pages
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button id="prevPage" class="btn" style="background: var(--lighter); color: var(--text-primary);" disabled>
+                            <i class="fas fa-chevron-left"></i> Previous
+                        </button>
+                        <button id="nextPage" class="btn" style="background: var(--lighter); color: var(--text-primary);" disabled>
+                            Next <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Export Modal -->
+            <div id="exportModal" class="modal">
+                <div class="modal-content" style="max-width: 500px;">
+                    <span class="close">&times;</span>
+                    <h3 style="margin-bottom: 1.5rem;">Export Attendance Records</h3>
+                    <div class="form-group">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                            Export Format
+                        </label>
+                        <select id="exportFormat" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--lighter); color: var(--text-primary); margin-bottom: 1.5rem;">
+                            <option value="csv">CSV (Excel)</option>
+                            <option value="json">JSON</option>
+                            <option value="pdf">PDF</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                            Date Range
+                        </label>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                            <input type="text" id="exportStartDate" placeholder="Start date" 
+                                   style="padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--lighter); color: var(--text-primary);">
+                            <input type="text" id="exportEndDate" placeholder="End date" 
+                                   style="padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--lighter); color: var(--text-primary);">
+                        </div>
+                    </div>
+                    <button id="confirmExport" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-download"></i> Export Records
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-calendar-check"></i> AttendancePro</h3>
+                    <p>Modern attendance tracking for the digital age.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="attendance.html">Mark Attendance</a></li>
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="js/main.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/history.js"></script>
+</body>
+</html>
