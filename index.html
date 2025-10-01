@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AttendancePro | Modern Attendance Tracking System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>AttendancePro</span>
+                </a>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                <li><a href="register.html"><i class="fas fa-user-plus"></i> Register</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Modern Attendance Tracking with Geolocation & QR Codes</h1>
+                <p>A cutting-edge solution for managing attendance with precise location verification and secure QR code technology. Perfect for businesses, schools, and organizations.</p>
+                <div class="hero-buttons">
+                    <a href="login.html" class="btn btn-primary"><i class="fas fa-rocket"></i> Get Started</a>
+                    <a href="#features" class="btn btn-secondary"><i class="fas fa-info-circle"></i> Learn More</a>
+                    <a href="#demo" class="btn btn-accent"><i class="fas fa-play"></i> View Demo</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/images/attendance-hero.svg" alt="Attendance System">
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2>Why Choose AttendancePro?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Precise Geolocation</h3>
+                    <p>Verify attendance based on exact user coordinates with advanced location tracking technology.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <h3>Secure QR Validation</h3>
+                    <p>Scan unique, time-sensitive QR codes to prevent fraudulent attendance marking.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Advanced Analytics</h3>
+                    <p>View detailed reports, statistics, and trends of attendance history with beautiful visualizations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Real-time Notifications</h3>
+                    <p>Get instant alerts for attendance events, reminders, and important updates.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Responsive</h3>
+                    <p>Works seamlessly on all devices - desktop, tablet, and mobile with a consistent experience.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Enterprise Security</h3>
+                    <p>Bank-level security with encryption, secure authentication, and data protection.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo" class="demo-section">
+            <h2>See It In Action</h2>
+            <div class="demo-container">
+                <div class="demo-card">
+                    <div class="demo-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Easy Check-ins</h3>
+                    <p>Watch how users can quickly check in with just a few taps and a QR scan.</p>
+                    <button class="btn btn-primary mt-3 demo-video-btn" data-video="checkin">View Demo</button>
+                </div>
+                <div class="demo-card">
+                    <div class="demo-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Live Dashboard</h3>
+                    <p>See real-time attendance data and analytics on our interactive dashboard.</p>
+                    <button class="btn btn-primary mt-3 demo-video-btn" data-video="dashboard">View Demo</button>
+                </div>
+                <div class="demo-card">
+                    <div class="demo-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Admin Features</h3>
+                    <p>Explore powerful admin tools for managing users, locations, and reports.</p>
+                    <button class="btn btn-primary mt-3 demo-video-btn" data-video="admin">View Demo</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>Have questions or need support? Our team is here to help you.</p>
+                    <div class="contact-details">
+                        <p><i class="fas fa-envelope"></i> support@attendancepro.com</p>
+                        <p><i class="fas fa-phone"></i> +254 700 123 456</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-calendar-check"></i> AttendancePro</h3>
+                    <p>Modern attendance tracking for the digital age.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#demo">Demo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> support@attendancepro.com</p>
+                    <p><i class="fas fa-phone"></i> +254 700 123 456</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AttendancePro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Demo Video Modal -->
+    <div id="demoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="modalTitle">Demo Video</h3>
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Video demonstration would play here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/theme.js"></script>
+</body>
+</html>
